@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import proyecto.hibernate.beans.Contacts;
-import proyecto.hibernate.beans.ContactsId;
+import proyecto.hibernate.beans.ContactsListId;
 
 
 public class ContactsDAO extends  HibernateDaoSupport {
@@ -19,7 +19,7 @@ private static final Log log = LogFactory.getLog(ContactsDAO.class);
     public void save(Contacts transientInstance) {
         log.debug("saving Contacts instance");
         try {
-            getHibernateTemplate().saveOrUpdate(transientInstance);
+            getHibernateTemplate().save(transientInstance);
             log.debug("save successful");
         } catch (RuntimeException re) {
             log.error("save failed", re);
@@ -38,7 +38,7 @@ private static final Log log = LogFactory.getLog(ContactsDAO.class);
         }
     }
     
-    public Contacts findById(ContactsId id) {
+    public Contacts findById(ContactsListId id) {
         log.debug("getting Contacts instance with id: " + id);
         try {
             Contacts instance = (Contacts) getHibernateTemplate().get(Contacts.class, id);

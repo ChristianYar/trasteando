@@ -13,15 +13,18 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import proyecto.hibernate.beans.Users;
 
+
+
 public class UsersDAO extends  HibernateDaoSupport {
 	
 	private static final Log log = LogFactory.getLog(UsersDAO.class);
 	
+	
 	// property constants
-	public static final String PASSWORD  = "password";
-	public static final String ENABLED   = "enabled";
-    public static final String USER_EMAIL= "userEmail";
-	public static final String USERNAME ="username";
+	public static final String PASSWORD = "password";
+	public static final String ENABLED = "enabled";
+	public static final String USER_EMAIL = "userEmail";
+	
 
 	public void save(Users transientInstance) {
 		log.debug("saving Users instance");

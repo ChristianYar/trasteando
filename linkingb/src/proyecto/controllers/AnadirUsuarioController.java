@@ -1,10 +1,12 @@
 package proyecto.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,17 +28,7 @@ public class AnadirUsuarioController extends SimpleFormController {
 	
     private UsersDAO usersDAO;
     private AuthoritiesDAO authDAO; 
-    
-//  private MailHelper mailHelper;   
-//    
-//	public MailHelper getMailHelper() {
-//		return mailHelper;
-//	}
-//
-//	public void setMailHelper(MailHelper mailHelper) {
-//		this.mailHelper = mailHelper;
-//    }
-//	
+
     
 	public AuthoritiesDAO getAuthDAO() {
 		return authDAO;
@@ -56,7 +48,8 @@ public class AnadirUsuarioController extends SimpleFormController {
 	
 
 	@Override
-	protected Object formBackingObject(HttpServletRequest request) throws Exception {		
+	protected Object formBackingObject(HttpServletRequest request) throws Exception 
+	{		
 		
 		return super.formBackingObject(request);
 	}
@@ -74,30 +67,24 @@ public class AnadirUsuarioController extends SimpleFormController {
 		//Does the user exist  in the database
 		//case 1. Does not exist
 		
-		String userEmail = "";     
+		String userEmail = "";     //form.getUserEmail();		
+		ArrayList<Users> userList =  (ArrayList<Users>)usersDAO.findByProperty( UsersDAO.USER_EMAIL, userEmail); 	
 		
-	//	form.getUserEmail();		
-		  @SuppressWarnings("unchecked")
-	     ArrayList<Users> userList =  (ArrayList<Users>)usersDAO.findByProperty( UsersDAO.USER_EMAIL, userEmail); 	
 		
 	
-		       if (userList.isEmpty()){				
+		if (userList.isEmpty()){				
 				
-			    
 				//create a User, using data extracted from commandForm
 				
-				 Users user=new Users();
-				 user.setUsername(form.getUsername());
-				 user.setPassword(form.getPassword().trim());
-			   
-					
-			    //user.setUserEmail( userEmail );
+				Users user=new Users();
+				user.setPassword(form.getPassword().trim());
+				//user.setUserEmail( userEmail );
 				
 				AuthoritiesId autId=new AuthoritiesId();
-				autId.setUsers(user);
+				autId.setUsername(form.getUsername());
 				autId.setAuthority("ROLE_USUARIO");
 				
-			 	Set<Authorities> lista= new HashSet(0);
+			    Set<Authorities> lista= new HashSet(0);
 				Authorities auto=new Authorities();
 				auto.setId(autId);
 				lista.add(auto);
@@ -107,17 +94,17 @@ public class AnadirUsuarioController extends SimpleFormController {
 			    
 			    String activationId = null;
 			    
-		      //  the mail is sent to activate the account with the link provided by default
-			  //  activationId = mailHelper.userActivationMail(user,request.getLocale());	
-			  //  user.setActivationId(activationId);
-			  //  user.setEnabled(false);
+		    	//the mail is sent to activate the account with the link provided by default
+			    //activationId = mailHelper.userActivationMail(user,request.getLocale());	
+			    //user.setActivationId(activationId);
+			    //user.setEnabled(false);
+			    
 			    
 			    usersDAO.save(user);
 			    authDAO.save(auto);					    
 	
 				map.put("usuario", user);		
 				return new ModelAndView("detalleUsuario",map);
-			    
 		}
 		else { 		
 			

@@ -1,33 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<!-- Generated 21-may-2013 17:32:09 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="proyecto.hibernate.beans.Users" table="USERS">
-        <id name="username" type="java.lang.String">
+    <class name="proyecto.hibernate.beans.Users" table="users" catalog="linkingb">
+        <id name="username" type="string">
             <column name="USERNAME" length="50" />
             <generator class="assigned" />
         </id>
-        <property name="password" type="java.lang.String">
+        <property name="password" type="string">
             <column name="PASSWORD" length="50" not-null="true" />
         </property>
-        <property name="enabled" type="java.lang.Boolean">
-            <column name="ENABLED" />
+        <property name="enabled" type="boolean">
+            <column name="ENABLED" not-null="true" />
         </property>
-        
-        <set name="authoritieses" inverse="false" cascade="all">
+        <set name="authoritieses" table="authorities" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="username" length="50" not-null="true" />
+                <column name="USERNAME" length="50" not-null="true" />
             </key>
             <one-to-many class="proyecto.hibernate.beans.Authorities" />
         </set>
-        
-        <set name="contactises" inverse="false" cascade="all">
-            <key>
-                <column name="username" length="50" not-null="true" />
-            </key>
-            <one-to-many class="proyecto.hibernate.beans.Contacts" />
-        </set>
-        
+        <one-to-one name="contacts" class="proyecto.hibernate.beans.Contacts"></one-to-one>
     </class>
 </hibernate-mapping>

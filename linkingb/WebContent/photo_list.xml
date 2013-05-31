@@ -14,7 +14,13 @@
 	
 	<photo>
 		<filename>images/slider/1.jpg</filename>
-		<description><![CDATA[<p class="subtitle">Image title one goes here</p><p><a href="http://www.flashmo.com" target="_parent">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. <span class="note">This text is dynamically loaded from the external XML file. This textfield supports HTML and CSS.</span></p>]]></description>
+		<description><![CDATA[<p class="subtitle">Image title one goes here</p>
+		<p>
+		<a href="http://www.flashmo.com" target="_parent">Lorem ipsum dolor sit amet</a>
+		, consectetur adipiscing elit. 
+		<span class="note">This text is dynamically loaded from the external XML file.
+		 This textfield supports HTML and CSS.</span>
+		 </p>]]></description>
 		<transition flow="in" direction="right" rotation="180"></transition>
 	</photo>
 	

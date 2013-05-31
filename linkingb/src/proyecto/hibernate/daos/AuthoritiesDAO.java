@@ -1,5 +1,6 @@
 package proyecto.hibernate.daos;
 
+
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,11 +15,7 @@ import proyecto.hibernate.beans.AuthoritiesId;
 public class AuthoritiesDAO extends  HibernateDaoSupport{
     private static final Log log = LogFactory.getLog(AuthoritiesDAO.class);
 
-
-
-
-    
-    public void save(Authorities transientInstance) {
+  public void save(Authorities transientInstance) {
         log.debug("saving Authorities instance");
         try {
             getHibernateTemplate().saveOrUpdate(transientInstance);

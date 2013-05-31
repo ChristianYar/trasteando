@@ -1,68 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<!-- Generated 21-may-2013 17:32:09 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="proyecto.hibernate.beans.Contacts" table="CONTACTS">
-        <composite-id name="id" class="proyecto.hibernate.beans.ContactsId">
-            <key-many-to-one name="users" class="proyecto.hibernate.beans.Users">
-                <column name="USERNAME" length="50" />
-            </key-many-to-one>
-            <key-property name="contacts" type="java.lang.String">
-                <column name="CONTACT_USERNAME" length="50" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="users" class="proyecto.hibernate.beans.Users" update="false" insert="false" fetch="select">
-            <column name="USERNAME" length="50" not-null="true" />
-        </many-to-one>
-        
-       <property name="companyName" type="java.lang.String">
-            <column name="COMPANY_NAME" length="50" />
-       </property>
-       
-       <property name="professionalRole" type="java.lang.String">
-            <column name="PROFESSIONAL_ROLE" length="50" />
-       </property>
-       
-       <property name="name" type="java.lang.String">
-            <column name="NAME" length="50" />
-       </property>
-       
-       <property name="surname" type="java.lang.String">
+    <class name="proyecto.hibernate.beans.Contacts" table="contacts" catalog="linkingb">
+        <id name="contactUsername" type="string">
+            <column name="CONTACT_USERNAME" length="50" />
+            <generator class="foreign">
+                <param name="property">users</param>
+            </generator>
+        </id>
+        <one-to-one name="users" class="proyecto.hibernate.beans.Users" constrained="true"></one-to-one>
+        <property name="companyName" type="string">
+            <column name="COMPANY_NAME" length="50" not-null="true" />
+        </property>
+        <property name="professionalRole" type="string">
+            <column name="PROFESSIONAL_ROLE" length="50"/>
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <property name="surname" type="string">
             <column name="SURNAME" length="50" />
-       </property>
-       
-       <property name="address" type="java.lang.String">
-            <column name="ADDRESS" length="50" />
-       </property>
-       
-       <property name="city" type="java.lang.String">
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="50"/>
+        </property>
+        <property name="city" type="string">
             <column name="CITY" length="50" />
-       </property>
-       
-       <property name="country" type="java.lang.String">
+        </property>
+        <property name="country" type="string">
             <column name="COUNTRY" length="50" />
-       </property>
-       
-       <property name="email" type="java.lang.String">
-            <column name="EMAIL" length="50" />
-       </property>
-       
-       <property name="mobile" type="java.lang.String">
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" not-null="true" />
+        </property>
+        <property name="mobile" type="string">
             <column name="MOBILE" length="20" />
-       </property>
-       
-       <property name="phone" type="java.lang.String">
-            <column name="PHONE" length="20" />
-       </property>
-       
-       <property name="note" type="java.lang.String">
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" length="20"/>
+        </property>
+        <property name="note" type="string">
             <column name="NOTE" length="50" />
-       </property>  
-       
-       <property name="usersUserName" type="java.lang.String">
-            <column name="USERS_USERNAME" length="50" />
-       </property>    
-        
+        </property>
+        <set name="contactsListsForContactListed" table="contacts_list" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CONTACT_LISTED" length="50" not-null="true" />
+            </key>
+            <one-to-many class="proyecto.hibernate.beans.ContactsList" />
+        </set>
+        <set name="contactsListsForContactMain" table="contacts_list" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CONTACT_MAIN" length="50" not-null="true" />
+            </key>
+            <one-to-many class="proyecto.hibernate.beans.ContactsList" />
+        </set>
     </class>
 </hibernate-mapping>

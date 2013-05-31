@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<!-- Generated 21-may-2013 17:32:09 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="proyecto.hibernate.beans.Authorities" table="AUTHORITIES">
+    <class name="proyecto.hibernate.beans.Authorities" table="authorities" catalog="linkingb">
         <composite-id name="id" class="proyecto.hibernate.beans.AuthoritiesId">
-            <key-many-to-one name="users" class="proyecto.hibernate.beans.Users">
+            <key-property name="username" type="string">
                 <column name="USERNAME" length="50" />
-            </key-many-to-one>
-            <key-property name="authority" type="java.lang.String">
+            </key-property>
+            <key-property name="authority" type="string">
                 <column name="AUTHORITY" length="50" />
             </key-property>
         </composite-id>
