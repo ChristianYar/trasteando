@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+<bean id="userValidator"  class="proyecto.validators.UserValidator"/> 
+  
+  <bean id="anadirUsuarioController" class="proyecto.controllers.AnadirUsuarioController">
+            <property name="usersDAO"><ref bean="usersDAO"/></property>  	  		
+            <property name="commandName"><value>userCommand</value></property>
+	        <property name="commandClass"><value>proyecto.commands.UserCommand</value></property>
+	        <property name="validator"><ref bean="userValidator"/></property>
+	        <property name="formView"><value>nuevoUsuario</value></property> 
+  </bean>
+
+<bean id="loginController" class="proyecto.controllers.LoginController" >
+     
+      <property name="methodNameResolver">
+		<bean
+			class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+			<property name="mappings">
+				<props>	
+					<prop key="/login.htm">login</prop>	
+					<prop key="/dentro.htm">dentro</prop>
+					<prop key="/userInicio.htm">inicio</prop>									
+				</props>
+				
+			</property>
+		</bean>
+		</property>	
+      </bean>
+      
+      <bean id="simpleUrlController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"></bean>
+      <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="defaultHandler" value="simpleUrlController"/>
+		<property name="alwaysUseFullPath"><value>true</value></property>
+        <property name="mappings">
+            <props>
+            	<prop key="/login.htm">loginController</prop>
+            	<prop key="/dentro.htm">loginController</prop>
+				<prop key="/userInicio.htm">loginController</prop>
+            	<prop key="/anadirUsuario.htm">anadirUsuarioController</prop>
+            	
+            </props>
+        </property>
+     </bean>
+      
+         	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="requestContextAttribute" value="requestContext"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles.TilesJstlView"/>
+		
+	</bean>
+     	<!-- BEAN PARA CARGAR LA CONFIGURACIÓN DE LAS TILES -->
+	<bean id="tilesConfigurer"  class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/proyecto-defs.xml</value>
+			</list>
+		</property>
+	</bean>
+ </beans>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="proyecto.hibernate.beans.Contacts" table="CONTACTS">
+        <composite-id name="id" class="proyecto.hibernate.beans.ContactsId">
+            <key-many-to-one name="users" class="proyecto.hibernate.beans.Users">
+                <column name="USERNAME" length="50" />
+            </key-many-to-one>
+            <key-property name="contacts" type="java.lang.String">
+                <column name="CONTACT_USERNAME" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="users" class="proyecto.hibernate.beans.Users" update="false" insert="false" fetch="select">
+            <column name="USERNAME" length="50" not-null="true" />
+        </many-to-one>
+        
+       <property name="companyName" type="java.lang.String">
+            <column name="COMPANY_NAME" length="50" />
+       </property>
+       
+       <property name="professionalRole" type="java.lang.String">
+            <column name="PROFESSIONAL_ROLE" length="50" />
+       </property>
+       
+       <property name="name" type="java.lang.String">
+            <column name="NAME" length="50" />
+       </property>
+       
+       <property name="surname" type="java.lang.String">
+            <column name="SURNAME" length="50" />
+       </property>
+       
+       <property name="address" type="java.lang.String">
+            <column name="ADDRESS" length="50" />
+       </property>
+       
+       <property name="city" type="java.lang.String">
+            <column name="CITY" length="50" />
+       </property>
+       
+       <property name="country" type="java.lang.String">
+            <column name="COUNTRY" length="50" />
+       </property>
+       
+       <property name="email" type="java.lang.String">
+            <column name="EMAIL" length="50" />
+       </property>
+       
+       <property name="mobile" type="java.lang.String">
+            <column name="MOBILE" length="20" />
+       </property>
+       
+       <property name="phone" type="java.lang.String">
+            <column name="PHONE" length="20" />
+       </property>
+       
+       <property name="note" type="java.lang.String">
+            <column name="NOTE" length="50" />
+       </property>  
+       
+       <property name="usersUserName" type="java.lang.String">
+            <column name="USERS_USERNAME" length="50" />
+       </property>    
+        
+    </class>
+</hibernate-mapping>

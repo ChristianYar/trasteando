@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+ <definition name="login" page="/jsp/login.jsp"/>
+ <definition name="nuevoUsuario" page="/jsp/nuevoUsuario.jsp"/>
+ <definition name="detalleUsuario" page="/jsp/detalleUsuario.jsp"/>
+ <definition name="inicio" page="/jsp/inicio.jsp"/>
+</tiles-definitions>

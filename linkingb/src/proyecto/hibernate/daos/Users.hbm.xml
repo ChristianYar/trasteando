@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="proyecto.hibernate.beans.Users" table="USERS">
+        <id name="username" type="java.lang.String">
+            <column name="USERNAME" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="50" not-null="true" />
+        </property>
+        <property name="enabled" type="java.lang.Boolean">
+            <column name="ENABLED" />
+        </property>
+        
+        <set name="authoritieses" inverse="false" cascade="all">
+            <key>
+                <column name="username" length="50" not-null="true" />
+            </key>
+            <one-to-many class="proyecto.hibernate.beans.Authorities" />
+        </set>
+        
+        <set name="contactises" inverse="false" cascade="all">
+            <key>
+                <column name="username" length="50" not-null="true" />
+            </key>
+            <one-to-many class="proyecto.hibernate.beans.Contacts" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

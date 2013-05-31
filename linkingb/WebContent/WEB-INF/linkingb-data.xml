@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+<bean id="usersDAO" class="proyecto.hibernate.daos.UsersDAO">
+      <property name="hibernateTemplate">
+          <ref bean="hibernateTemplate"></ref>
+          
+      </property>
+</bean>
+
+<bean id="contactsDAO" class="proyecto.hibernate.daos.ContactsDAO">
+      <property name="hibernateTemplate">
+          <ref bean="hibernateTemplate"></ref>
+      </property>
+</bean>
+
+<bean id="AuthoritiesDAO" class="proyecto.hibernate.daos.AuthoritiesDAO">
+      <property name="hibernateTemplate">
+          <ref bean="hibernateTemplate"></ref>
+      </property>
+</bean>
+
+</beans>
+
