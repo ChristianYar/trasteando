@@ -1,5 +1,5 @@
-<%@include file="include.jsp"%>
-
+<%@include file="/jsp/include.jsp"%>
+<%@page import="proyecto.hibernate.beans.Users"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +9,7 @@
 <meta name="keywords" content="vcard, linkingbe" />
 <meta name="description" content="vcard" />
 <link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
 
 <script type="text/javascript" src="js/swfobject.js"></script>
 <script type="text/javascript">
@@ -22,8 +23,7 @@
 </script>
 
 <script language="javascript" type="text/javascript">
-function clearText(field)
-{
+function clearText(field){
     if (field.defaultValue == field.value) field.value = '';
     else if (field.value == '') field.value = field.defaultValue;
 }
@@ -39,7 +39,6 @@ function clearText(field)
 * This notice MUST stay intact for legal use
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 ***********************************************/
-
 </script>
 
 <script type="text/javascript">
@@ -53,37 +52,111 @@ ddsmoothmenu.init({
 })
 
 </script>
-  
+
 </head>
 <body id="home">
-<div id="templatemo_wrapper">
-	<div id="templatemo_top">
-    	<div id="templatemo_login">
-        </div>
-    </div> <!-- end of top -->
-    
-  	<div id="templatemo_header">
-    	<div id="site_title"><h1><font color="orange">Linking B</font></h1></div>
-        <div id="templatemo_menu" class="ddsmoothmenu">
-            <ul>
-              	<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
-         		<li><a href="<%=request.getContextPath()%>/about.jsp" class="selected"> About Us</a></li>
-          		<li><a href="<%=request.getContextPath()%>/product.jsp">Product</a></li>             	
-              	<li><a href="<%=request.getContextPath()%>/contact.jsp">Contact</a></li>
-            </ul>
-            <br style="clear: left" />
-        </div> <!-- end of templatemo_menu -->
-    </div> <!-- end of header -->
-    
-   
-<div id="templatemo_footer_wrapper">
-    <div id="templatemo_footer">
-        Copyright © 2013 | 
-        Designed by LinkingB all rights reserved <a href="http://www.google.com" target="_parent">Linking B</a>
-        <div class="cleaner"></div>
-    </div>
-</div> 
-  
+
+
+	<div id="templatemo_wrapper">
+		<div id="templatemo_top">
+			<div id="templatemo_login">
+
+				<form id="signout" action="j_acegi_security_check.htm" method="post">
+					<!--    <a href=" <%=request.getContextPath()%>/index.jsp"></a>-->
+
+					<input type="submit" name="logout" value="logout" />
+				</form>
+			</div>
+
+		</div>
+		<!-- end of top -->
+
+		<div id="templatemo_header">
+			<div id="site_title">
+				<h1>
+					<font color="orange">Linking B</font>
+				</h1>
+			</div>
+			<div id="templatemo_menu" class="ddsmoothmenu">
+				<ul>
+					<li><a href="<%=request.getContextPath()%>/contacts.htm">Contacts</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/detalles.htm">Profile</a></li>
+						
+					<li><a
+						href="<%=request.getContextPath()%>/edit.htm">Edit</a></li>
+				</ul>
+				<br style="clear: left" />
+			</div>
+			<!-- end of templatemo_menu -->
+		</div>
+		<!-- end of header -->
+
+		<!--  
+   <script type="text/javascript">
+       var frm_element = document.getElementById("signin");
+       var name_element = document.getElementById("j_password").value;
+         document.write("nombre"+frm_element);
+         document.write("valor"+name_element); 
+         alert("psps"+frm_element);
+    </script> -->
+
+		<div id="templatemo_main">
+			<div class="col_fw_last">
+				<div class="col_allw300">
+					<div class="news_box">
+						<a href="#">User</a>
+						<p>
+							Nombre:Christian Yar Rivas <br /> Role :User<br /> Company
+							:Trustparency state practice
+						</p>
+					</div>
+
+
+					<br /> <br />
+					<div class="news_box">
+						<a href="#"></a>
+
+					</div>
+					<div class="news_box">
+						<a href="#"></a>
+						<p>
+							<p>
+								Nombre:Segundo Usuario<br /> Role :User<br /> Company :Apple
+							</p>
+						</p>
+					</div>
+					<div class="cleaner h20"></div>
+
+				</div>
+
+			</div>
+			<div class="cleaner"></div>
+
+		</div>
+		<!-- end of main -->
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+	</div>
+	<!-- end of wrapper -->
+
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<div class="cleaner"></div>
+	<div id="templatemo_footer_wrapper">
+		<div id="templatemo_footer">
+			Copyright © 2013 | Designed by <a href="http://www.google.com"
+				target="_parent">Linking B</a>
+			<div class="cleaner"></div>
+		</div>
+	</div>
+
 </body>
 </html>
-

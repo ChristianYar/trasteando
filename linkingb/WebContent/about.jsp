@@ -56,11 +56,12 @@ ddsmoothmenu.init({
 <div id="templatemo_wrapper">
 	<div id="templatemo_top">
     	<div id="templatemo_login">
-            <form action="#" method="get">
-              <input type="text" value="username" name="q" size="10" id="username" title="username" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-              <input type="password" value="password" name="q" size="10" id="password" title="password" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-              <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-            </form>
+            <form id="signin" action="j_acegi_security_check.htm" method="post">
+              <input type="text" value="username" name="j_username" size="10" id="username" title="username" onfocus="clearText(this)"     onblur="clearText(this)" class="txt_field" />
+              <input type="password" value="password" name="j_password" size="10" id="password" title="password" onfocus="clearText(this)"  onblur="clearText(this)" class="txt_field" />        
+              <input type="submit" name="login" value=""  class="sub_btn" />        
+              <a href=" <%=request.getContextPath()%>/login.htm"></a>
+            </form> 
 		</div>
     </div> <!-- end of top -->
     
@@ -125,7 +126,7 @@ ddsmoothmenu.init({
         <div id="templatemo_sidebar">
           <div class="cleaner h40"></div>
           
-          <!-- Opcional facebook -->
+          <!-- Opcional facebook
           
           <div id="fb-root"></div>
               <script>(function(d, s, id) {
@@ -162,15 +163,16 @@ ddsmoothmenu.init({
         <div class="cleaner"></div>
     </div> <!-- end of main -->
 </div> <!-- end of wrapper -->
+ 
 
-
-<div id="templatemo_footer_wrapper">
-    <div id="templatemo_footer">
+ <div id="templatemo_footer">
         Copyright © 2013 | 
-        Designed by <a href="http://www.google.com" target="_parent">Linking B</a>
+        Designed by <a href="http://www.linkingb.com" target="_parent">Linking B</a>
         <div class="cleaner"></div>
     </div>
-</div> 
-  
+    
+    </div>
+
+
 </body>
 </html>

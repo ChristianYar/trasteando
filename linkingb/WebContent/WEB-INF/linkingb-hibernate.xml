@@ -32,13 +32,9 @@
 	</property>
 	 
 	<property name="url">
-  		<value>jdbc:mysql://localhost:3306/linkingb</value> 
-  	</property>
-	 <property name="username">
-  		<value>root</value> 
-  	</property>
-    <property name="password">
-  		<value>root</value>
+  		<value>jdbc:mysql://127.0.0.1:3306/linkingb</value> </property>
+	 <property name="username">	<value>root</value> </property>
+    <property name="password">		<value>root</value>
   	</property>
 </bean>
 

@@ -2,6 +2,10 @@ package proyecto.hibernate.daos;
 
 import java.util.List;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.acegisecurity.context.SecurityContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -13,24 +17,33 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import proyecto.hibernate.beans.Users;
 
-
-
 public class UsersDAO extends  HibernateDaoSupport {
 	
 	private static final Log log = LogFactory.getLog(UsersDAO.class);
-	
-	
+
 	// property constants
 	public static final String PASSWORD = "password";
 	public static final String ENABLED = "enabled";
 	public static final String USER_EMAIL = "userEmail";
-	
 
 	public void save(Users transientInstance) {
 		log.debug("saving Users instance");
 		try {
 			getHibernateTemplate().saveOrUpdate(transientInstance);
 			log.debug("save successful");
+		} catch (RuntimeException re) {
+			log.error("save failed", re);
+			throw re;
+		}
+	}
+	
+	public void update(Users transientInstance) {
+		log.debug("updating Users instance");
+		
+		try {	
+			getHibernateTemplate().saveOrUpdate(transientInstance); //saveOrUpdate(transientInstance);
+			log.debug("save successful");
+			
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;
@@ -58,8 +71,34 @@ public class UsersDAO extends  HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	@SuppressWarnings("static-access")
+	public static Users GetUserLogged(HttpServletRequest request, UsersDAO usersDAO){
+			
+			try{
+				
+			SecurityContext contexto = (SecurityContext) request.getSession()
+					.getAttribute("ACEGI_SECURITY_CONTEXT");
 
-
+			Users user = (Users) contexto.getAuthentication().getPrincipal();
+			
+			long userID = new Long(user.getUsername());
+	        String usuario="";
+	        usuario.valueOf(userID);
+			user =usersDAO.findById(usuario);
+			
+			System.out.println("retorno "+user);
+			System.out.println("retorno 222 "+usuario);
+			
+			return user;
+			
+			}catch (Exception e){
+				
+				return null;
+			}
+		
+		}
+		
 
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding Users instance with property: " + propertyName

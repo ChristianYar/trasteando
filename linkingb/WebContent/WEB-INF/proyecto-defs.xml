@@ -2,8 +2,21 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
                                    "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
 <tiles-definitions>
- <definition name="login" page="/jsp/login.jsp"/>
- <definition name="nuevoUsuario" page="/jsp/nuevoUsuario.jsp"/>
+ 
+ <definition name="login"          page="/jsp/inicio.jsp"/>
+ 
+ <definition name="nuevoUsuario"   page="/jsp/nuevoUsuario.jsp"/>
  <definition name="detalleUsuario" page="/jsp/detalleUsuario.jsp"/>
- <definition name="inicio" page="/jsp/inicio.jsp"/>
+ <definition name="inicio"         page="/jsp/inicio.jsp"/>
+ <definition name="init"           page="/index.jsp"/>
+ <definition name="contacts"       page="/jsp/initProyect.jsp"/>
+ <definition name="detalles"       page="/jsp/detalles.jsp"/>
+ <definition name="edit"           page="/jsp/edit.jsp"/>
+ <definition name="edited"         page="/jsp/edited.jsp"/>
+ 
+ 
+ 
+  
 </tiles-definitions>
+
+

@@ -69,8 +69,6 @@ public class AnadirUsuarioController extends SimpleFormController {
 		
 		String userEmail = "";     //form.getUserEmail();		
 		ArrayList<Users> userList =  (ArrayList<Users>)usersDAO.findByProperty( UsersDAO.USER_EMAIL, userEmail); 	
-		
-		
 	
 		if (userList.isEmpty()){				
 				
@@ -98,8 +96,7 @@ public class AnadirUsuarioController extends SimpleFormController {
 			    //activationId = mailHelper.userActivationMail(user,request.getLocale());	
 			    //user.setActivationId(activationId);
 			    //user.setEnabled(false);
-			    
-			    
+			
 			    usersDAO.save(user);
 			    authDAO.save(auto);					    
 	

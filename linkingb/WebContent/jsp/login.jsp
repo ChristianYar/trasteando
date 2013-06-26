@@ -1,7 +1,6 @@
 <%@include file="include.jsp"%>
 
 
-
 <form action="j_acegi_security_check.htm" method="post">  
   <FIELDSET>
   <LEGEND>ENTRADA APLICACION</LEGEND>
